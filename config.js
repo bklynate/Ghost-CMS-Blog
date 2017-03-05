@@ -12,7 +12,17 @@ config = {
     // Configure your URL and mail settings here
     production: {
         url: process.env.BLOG_URL,
-        mail: {},
+        mail: {
+          transport: 'sendgrid',
+          host: 'smtp.sendgrid.net',
+          options: {
+            service: 'Sendgrid',
+            auth: {
+              user: process.env.SENDGRID_USERNAME,
+              pass: process.env.SENDGRID_PASSWORD
+            }
+          }
+        },
         database: {
           client: 'postgres',
           connection: {
